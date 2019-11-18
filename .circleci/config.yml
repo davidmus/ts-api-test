@@ -20,7 +20,7 @@ jobs:
             npm test --ci --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT: ~/test-results/junit/results.xml
-      - store-artifacts:
+      - store_artifacts:
           path: ~/test-results/junit
-      - store-rest-results:
+      - store_rest_results:
           path: ~/test-results
