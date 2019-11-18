@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@1.1.6
+  aws-ecr: circleci/aws-ecr@6.5.0
 
 jobs:
 
@@ -35,6 +36,24 @@ jobs:
       - store_test_results:
           path: ./test-results
 
+  package:
+    executor:
+      name: node/default
+      tag: '10.4'
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run:
+                name: Build for production
+                command: npm run build:prod
+      - aws-ecr/build-and-push-image:
+          account-url: ${AWS_ECR_ACCOUNT_URL}
+          aws-access-key-id: ${AWS_ACCESS_KEY_ID}
+          aws-secret-access-key: ${AWS_SECRET_ACCESS_KEY}
+          context: AWS
+          region: ${AWS_REGION}
+
 workflows:
   version: 2.1
 
@@ -44,3 +63,6 @@ workflows:
       - test:
           requires:
             - install
+      - package:
+          requires:
+            - test
