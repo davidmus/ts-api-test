@@ -90,5 +90,8 @@
       "<rootDir>/tests/**/*.spec.(ts|js)"
     ],
     "testEnvironment": "node"
+  },
+  "jest-junit":{
+      "output": "./test-results/junit/results.xml"
   }
 }
