@@ -53,6 +53,7 @@ jobs:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           context: AWS
           region: AWS_REGION
+          repo: spw-test
 
 workflows:
   version: 2.1
