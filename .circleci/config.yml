@@ -68,3 +68,6 @@ workflows:
           context: AWS
           requires:
             - test
+          filters:
+            branches:
+              only: release
