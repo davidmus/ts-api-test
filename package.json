@@ -61,6 +61,7 @@
     "@types/webpack": "^4.39.5",
     "cross-env": "^6.0.3",
     "jest": "^24.9.0",
+    "jest-junit": "^9.0.0",
     "nodemon": "^1.19.4",
     "nodemon-webpack-plugin": "^4.1.1",
     "shelljs": "^0.8.3",
@@ -91,7 +92,8 @@
     ],
     "testEnvironment": "node"
   },
-  "jest-junit":{
-      "output": "./test-results/junit/results.xml"
+  "jest-junit": {
+    "outputDirectory": "./test-results/junit",
+    "outputName": "results.xml"
   }
 }
